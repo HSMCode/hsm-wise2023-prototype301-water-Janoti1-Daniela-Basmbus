@@ -34,8 +34,8 @@ public class CollisionSpawn : MonoBehaviour
     private Vector3 position = new Vector3(0, 0, 0);
     private Quaternion rotation = Quaternion.Euler(0, 0, 0);
 
-    private int score = 0;
-    private int minusScore = 0;
+    //private int score = 0;
+   // private int minusScore = 0;
    
 
     void Start()
