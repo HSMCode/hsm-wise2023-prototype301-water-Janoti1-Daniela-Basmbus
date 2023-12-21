@@ -16,6 +16,12 @@ public class Background : MonoBehaviour
     void Start()
     {
         mat = GetComponent<Renderer>().material;
+        
+    }
+
+    void Update ()
+    {
+       // scrollSpeed = scrollSpeed + 0.0001f;
     }
 
     void FixedUpdate()
@@ -23,6 +29,8 @@ public class Background : MonoBehaviour
         //gameObject.transform.Translate(Vector3.right * speed);
         offset += (Time.deltaTime * scrollSpeed);
         mat.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+
+        
     }
     
 }

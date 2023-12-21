@@ -38,9 +38,6 @@ public class CollisionSpawn : MonoBehaviour
     private DespawnerGetScore ScoreCount;
     public DespawnerGetScore DespawnerGetScore;
 */
-
-    //private int score = 0;
-   // private int minusScore = 0;
    
 
     void Start()
@@ -68,33 +65,6 @@ public class CollisionSpawn : MonoBehaviour
 
     void Update() {
 
-        // Dynamically increase Spawnrate by reaching a certain Score
-
-/*
-        score = despawnerScript.ScoreCount;
-        score = score - minusScore;
-
-        
-
-        if (score > DifficultyStep){
-
-            Debug.Log(minusScore);
-            
-            // increase Spawn amount by 1
-            //SpawnAmount++;
-
-            // increase Gravity to counter the speed
-            playeScript.GravityDifficultyMultiplier *= 1.5f;
-
-            // increase Movement Speed of Elements, Background (multiply by 2)
-            backgroundScript.scrollSpeed *= 1.1f;
-
-            // set next threshold for increase
-            minusScore = score;
-            }
-*/
-           
-        
 
     }
 
@@ -111,13 +81,6 @@ public class CollisionSpawn : MonoBehaviour
             StartCoroutine(WaitForSpawning(SpawnFrequency, SpawnAmount));
         }
 
-  /*      
-        if (ScoreCount > 10 && ScoreCount < 12)
-            {
-                 SpawnFrequency = SpawnFrequency - 2;
-            }
-    }
-*/
 
     // wait for x amount of seconds, then reload to the main menu
     IEnumerator WaitForSpawning(float seconds, int spawnAmount){
@@ -136,8 +99,5 @@ public class CollisionSpawn : MonoBehaviour
 
 }
 }
-/*
-    TODO:
-    - What is the identifier of Quaternions and Vector3
-*/
+
 
