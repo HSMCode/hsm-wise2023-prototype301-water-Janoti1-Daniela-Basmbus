@@ -12,7 +12,7 @@ public class CollisionSpawn : MonoBehaviour
 
     // Variables determining Spawnrate etc all public for dynamic increase possibility
     public float[] Spawnpositions = {6f, 2.5f, 0f, -2.5f, -4.5f};
-    public float SpawnFrequency = 1.0f;
+    public float SpawnFrequency = 5f;
     public int SpawnAmount = 1;
     public int DifficultyStep = 3;
 
@@ -34,6 +34,11 @@ public class CollisionSpawn : MonoBehaviour
     private Vector3 position = new Vector3(0, 0, 0);
     private Quaternion rotation = Quaternion.Euler(0, 0, 0);
 
+/*
+    private DespawnerGetScore ScoreCount;
+    public DespawnerGetScore DespawnerGetScore;
+*/
+
     //private int score = 0;
    // private int minusScore = 0;
    
@@ -54,7 +59,11 @@ public class CollisionSpawn : MonoBehaviour
 
         // Invoke the function to spawn Collision elements
         InvokeRepeating("instance_of_object", 2.0f, SpawnFrequency);
-      
+
+/*
+        ScoreCount = GameObject.Find("Despawner").GetComponent<DespawnerGetScore>();
+        ScoreCount = ScoreCount.OnCollisionEnter;
+        */
     }
 
     void Update() {
@@ -82,9 +91,11 @@ public class CollisionSpawn : MonoBehaviour
 
             // set next threshold for increase
             minusScore = score;
-            
-        }
+            }
 */
+           
+        
+
     }
 
     // spawn an instance of the collider GameObject at the spawner 
@@ -100,7 +111,13 @@ public class CollisionSpawn : MonoBehaviour
             StartCoroutine(WaitForSpawning(SpawnFrequency, SpawnAmount));
         }
 
+  /*      
+        if (ScoreCount > 10 && ScoreCount < 12)
+            {
+                 SpawnFrequency = SpawnFrequency - 2;
+            }
     }
+*/
 
     // wait for x amount of seconds, then reload to the main menu
     IEnumerator WaitForSpawning(float seconds, int spawnAmount){
@@ -115,6 +132,9 @@ public class CollisionSpawn : MonoBehaviour
         
     }
 
+  
+
+}
 }
 /*
     TODO:

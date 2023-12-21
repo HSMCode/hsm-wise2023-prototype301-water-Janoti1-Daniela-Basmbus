@@ -66,6 +66,7 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetButton("Jump")) {
 
                 audioPlayer.Play();
+                
                 timer += Time.deltaTime;
 
                 if (timer > gravitydelay) {
