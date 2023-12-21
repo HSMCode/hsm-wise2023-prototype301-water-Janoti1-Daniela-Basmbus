@@ -1174,5 +1174,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c6cd2b9950cb949843a0381e057785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeedMultiplier: 50
   MovementSpeed: -0.025
+  spawner: {fileID: 8944570775922665155}

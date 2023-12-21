@@ -18,6 +18,8 @@ public class PlayerDespawn : MonoBehaviour
     // Variables to get Player Input
     private PlayerInput playerInputsControl;
 
+    public AudioSource audioPlayer;
+
 
     void Start() {
 
@@ -39,6 +41,8 @@ public class PlayerDespawn : MonoBehaviour
         {
             // Trigger the Death Animation
             anim.SetTrigger("Death");
+
+            audioPlayer.Play();
 
             // Stop the various Backdrops from Moving
             _stopBackground();

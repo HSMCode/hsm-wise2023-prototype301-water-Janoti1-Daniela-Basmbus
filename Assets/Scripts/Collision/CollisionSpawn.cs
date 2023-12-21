@@ -12,7 +12,7 @@ public class CollisionSpawn : MonoBehaviour
 
     // Variables determining Spawnrate etc all public for dynamic increase possibility
     public float[] Spawnpositions = {6f, 2.5f, 0f, -2.5f, -4.5f};
-    public float SpawnFrequency = 1.0f;
+    public float SpawnFrequency = 5f;
     public int SpawnAmount = 1;
     public int DifficultyStep = 3;
 
@@ -34,8 +34,10 @@ public class CollisionSpawn : MonoBehaviour
     private Vector3 position = new Vector3(0, 0, 0);
     private Quaternion rotation = Quaternion.Euler(0, 0, 0);
 
-    private int score = 0;
-    private int minusScore = 0;
+/*
+    private DespawnerGetScore ScoreCount;
+    public DespawnerGetScore DespawnerGetScore;
+*/
    
 
     void Start()
@@ -54,37 +56,16 @@ public class CollisionSpawn : MonoBehaviour
 
         // Invoke the function to spawn Collision elements
         InvokeRepeating("instance_of_object", 2.0f, SpawnFrequency);
-      
+
+/*
+        ScoreCount = GameObject.Find("Despawner").GetComponent<DespawnerGetScore>();
+        ScoreCount = ScoreCount.OnCollisionEnter;
+        */
     }
 
     void Update() {
 
-        // Dynamically increase Spawnrate by reaching a certain Score
 
-/*
-        score = despawnerScript.ScoreCount;
-        score = score - minusScore;
-
-        
-
-        if (score > DifficultyStep){
-
-            Debug.Log(minusScore);
-            
-            // increase Spawn amount by 1
-            //SpawnAmount++;
-
-            // increase Gravity to counter the speed
-            playeScript.GravityDifficultyMultiplier *= 1.5f;
-
-            // increase Movement Speed of Elements, Background (multiply by 2)
-            backgroundScript.scrollSpeed *= 1.1f;
-
-            // set next threshold for increase
-            minusScore = score;
-            
-        }
-*/
     }
 
     // spawn an instance of the collider GameObject at the spawner 
@@ -100,7 +81,6 @@ public class CollisionSpawn : MonoBehaviour
             StartCoroutine(WaitForSpawning(SpawnFrequency, SpawnAmount));
         }
 
-    }
 
     // wait for x amount of seconds, then reload to the main menu
     IEnumerator WaitForSpawning(float seconds, int spawnAmount){
@@ -115,9 +95,9 @@ public class CollisionSpawn : MonoBehaviour
         
     }
 
+  
+
 }
-/*
-    TODO:
-    - What is the identifier of Quaternions and Vector3
-*/
+}
+
 

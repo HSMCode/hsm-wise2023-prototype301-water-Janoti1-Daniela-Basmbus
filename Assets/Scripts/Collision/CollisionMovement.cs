@@ -1,13 +1,46 @@
 using UnityEngine;
 
-/*
-    Movement of Collision Objects
-    - connected with Background Speed
-*/
 
 public class CollisionMovement : MonoBehaviour
 {
-    public float MovementSpeedMultiplier = 50;
+ /*   
+    public float MovementSpeed = 1f;
+    
+    public GameObject spawner;
+
+    //private int counter =  0;
+
+    void Start(){
+
+        // get Obstacle and Background GameObject's
+        //collisionObject = GameObject.FindWithTag("Collision");
+        
+       spawner.transform.Translate(Vector3.left*MovementSpeed*Time.deltaTime, Space.World);
+
+
+    }
+    
+    void Update()
+    {
+
+      
+
+    }
+
+    void FixedUpdate() {
+
+    }
+
+
+
+/*
+/*
+    TODO:
+    - Fix Collision Objects getting faster and faster
+*/
+
+
+ public float MovementSpeedMultiplier = 50;
 
     // public because it has to be set to 0 when the player dies
     //[HideInInspector] 
@@ -74,9 +107,4 @@ public class CollisionMovement : MonoBehaviour
     void FixedUpdate() {
 
     }
-
 }
-/*
-    TODO:
-    - Fix Collision Objects getting faster and faster
-*/

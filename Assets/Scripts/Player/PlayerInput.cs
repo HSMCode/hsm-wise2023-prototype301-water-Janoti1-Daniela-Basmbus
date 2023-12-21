@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
     public GameObject player;
     private Rigidbody playerRigidBody;
     private Animator anim; 
+    public AudioSource audioPlayer;
+   
 
     // Jump Control Parameters
     public int JumpHeight = 30;
@@ -29,6 +31,8 @@ public class PlayerInput : MonoBehaviour
         // Get Player Components
         playerRigidBody = player.GetComponent<Rigidbody>();
         anim = player.GetComponent<Animator>();
+   
+        
     }
 
     void Update()
@@ -39,7 +43,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump") && collide_with_enviroment == true) //no double jumps 
             {
-
+                
+                
                 //player.transform.Translate(0, JumpHeight, 0, Space.World); //allows it to teleport through roof
                 //playerRigidBody.velocity = new Vector3(0, JumpHeight, 0);
 
@@ -60,6 +65,8 @@ public class PlayerInput : MonoBehaviour
 
             if (Input.GetButton("Jump")) {
 
+                audioPlayer.Play();
+                
                 timer += Time.deltaTime;
 
                 if (timer > gravitydelay) {
