@@ -12,6 +12,7 @@ TagManager:
   - ScriptEmpty
   - Highscore
   - Score
+  - Enemy
   layers:
   - Default
   - TransparentFX

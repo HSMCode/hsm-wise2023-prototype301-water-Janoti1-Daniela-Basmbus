@@ -26,18 +26,21 @@ public class PlayerInput : MonoBehaviour
     public bool playerInputs = true;
     private bool collide_with_enviroment = true;
     private bool gravity = true;
+
+    public ParticleSystem particleSystem;
+
+    private Quaternion targetRotation;
+    public float rotationTransitionTime = 1f;
  
-    void Start(){
+    void Start()
+    {
         // Get Player Components
         playerRigidBody = player.GetComponent<Rigidbody>();
-        anim = player.GetComponent<Animator>();
-   
-        
+        anim = player.GetComponent<Animator>();     
     }
 
     void Update()
     {
-
         // Checkpoint 0 = Just Jump
         if (checkpoint == 0 && playerInputs == true)
         {
@@ -54,7 +57,15 @@ public class PlayerInput : MonoBehaviour
                 // Jump
                 playerRigidBody.AddForce(0, JumpHeight, 0, ForceMode.VelocityChange);
                 
+                
+                
             }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            audioPlayer.Play();
+            particleSystem.Stop();
         }
 
         // Checkpoint 1 = Fly
@@ -65,8 +76,8 @@ public class PlayerInput : MonoBehaviour
 
             if (Input.GetButton("Jump")) {
 
-                audioPlayer.Play();
-                
+                //audioPlayer.Play();
+                particleSystem.Play();
                 timer += Time.deltaTime;
 
                 if (timer > gravitydelay) {
@@ -75,6 +86,10 @@ public class PlayerInput : MonoBehaviour
                     timer = 0;
                 }
 
+                targetRotation = Quaternion.Euler(-25f, player.transform.rotation.eulerAngles.y, player.transform.rotation.eulerAngles.z);
+
+                player.transform.rotation = Quaternion.Lerp(player.transform.rotation, targetRotation, Time.deltaTime / rotationTransitionTime);
+
                 // Enable Jump Animation (Return to Run Animation)
                 anim.SetBool("Swim", true);
 
@@ -82,6 +97,10 @@ public class PlayerInput : MonoBehaviour
             else {
 
                 Physics.gravity = new Vector3(0, gravitydown, 0);
+
+                targetRotation = Quaternion.Euler(25f, player.transform.rotation.eulerAngles.y, player.transform.rotation.eulerAngles.z);
+
+                player.transform.rotation = Quaternion.Lerp(player.transform.rotation, targetRotation, Time.deltaTime / rotationTransitionTime);
 
                 // Disable Jump Animation (Return to Run Animation)
                 anim.SetBool("Swim", false);
@@ -115,7 +134,7 @@ public class PlayerInput : MonoBehaviour
                     if (Input.GetButtonUp("Jump"))
                     {
                         Physics.gravity = new Vector3(0, gravitydown, 0);
-                        gravity = true;                        
+                        gravity = true;    
                     }
                 }
             }
@@ -142,8 +161,3 @@ public class PlayerInput : MonoBehaviour
     }
     
 }
-/*
-    TODO:
-    - Somehow Change public player to private.. 
-    - when doing it the classic way I get "Object reference not set to an instance of an Object"
-*/
