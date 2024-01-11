@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 8047628689421722100}
   - component: {fileID: 5105619606402024490}
   - component: {fileID: -379185087306973806}
+  - component: {fileID: 1738779382224087948}
   m_Layer: 0
   m_Name: Lobster
   m_TagString: Collision
@@ -445,8 +446,8 @@ Transform:
   m_GameObject: {fileID: 8047628689421722102}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.35921, z: -0.11134}
-  m_LocalScale: {x: 1, y: 2.9184983, z: 2.8485048}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 208362861110151446}
@@ -502,14 +503,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.14515764
-  m_Height: 0.82659334
+  m_Radius: 0.2
+  m_Height: 1.2
   m_Direction: 2
-  m_Center: {x: 0, y: 0.20849973, z: -0.08339962}
+  m_Center: {x: 0, y: 0.2, z: 0.04}
 --- !u!95 &8047628689421722100
 Animator:
   serializedVersion: 5
@@ -565,13 +566,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8047628689421722102}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70c6cd2b9950cb949843a0381e057785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeedMultiplier: 50
   MovementSpeed: -0.025
+--- !u!114 &1738779382224087948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047628689421722102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001451fecc3a03044b5595975d57dcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 5
+  maxSpeed: 8
 --- !u!1 &8047628689622576741
 GameObject:
   m_ObjectHideFlags: 0

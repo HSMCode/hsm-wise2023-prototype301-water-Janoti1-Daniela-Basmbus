@@ -101,10 +101,5 @@ public class CollisionMovement : MonoBehaviour
 
             MovementSpeedCheck = MovementSpeed;
         }
-
-    }
-
-    void FixedUpdate() {
-
     }
 }

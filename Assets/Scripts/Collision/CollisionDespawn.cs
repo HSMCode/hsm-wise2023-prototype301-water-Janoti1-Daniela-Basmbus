@@ -1,25 +1,27 @@
 using UnityEngine;
 
-/*
-  Despawn Collision Elements
-  - Part of Despawner Element, gets data of object that it collided with and deletes it
-*/
-
 public class CollisionDespawn : MonoBehaviour
 {
+    private Score scoreScript;
 
-  // Destroy GameObject once it hits the Despawner GameObject
-  void OnCollisionEnter (Collision collision)
-  {
-    if (collision.collider.tag == "Collision")
+    void Start()
     {
-
-      GameObject collisionObject;
-      collisionObject = collision.gameObject;
-      
-      Destroy(collisionObject);
-      
+        scoreScript = FindObjectOfType<Score>();
     }
-  }
 
+    // Destroy GameObject once it hits the Despawner GameObject
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Collision"))
+        {
+            // Zähler im Score-Skript erhöhen
+            if (scoreScript != null)
+            {
+                scoreScript.IncreaseScore();
+            }
+
+            // Zerstöre das kollidierende Objekt
+            Destroy(other.gameObject);
+        }
+    }
 }

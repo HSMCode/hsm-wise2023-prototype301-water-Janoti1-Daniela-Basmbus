@@ -32,7 +32,6 @@ public class PlayerDespawn : MonoBehaviour
 
         // Define PlayerInput Components
         playerInputsControl = player.GetComponent<PlayerInput>();
-
     }
 
     void OnCollisionEnter(Collision collision)
@@ -56,6 +55,23 @@ public class PlayerDespawn : MonoBehaviour
 
         }
     }
+
+    public void PlayerHit()
+    {
+        // Trigger the Death Animation
+        anim.SetTrigger("Death");
+
+        audioPlayer.Play();
+
+        // Stop the various Backdrops from Moving
+        _stopBackground();
+
+        // Stop Player Inputs
+        playerInputsControl.playerInputs = false;
+
+        // wait before going back to to Main Menu
+        StartCoroutine(Wait(DeathScreenTime));
+    }
     
     // Stop the various Backdrops from Moving
     private void _stopBackground(){
@@ -75,7 +91,3 @@ public class PlayerDespawn : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
-
-/*
-    TODO:
-*/
